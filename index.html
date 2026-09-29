@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickSign — חתימה על PDF במכשיר שלך</title>
+  <meta name="description" content="QuickSign: חותמים על PDF במהירות, עם חתימה וחותמת, בלי שהמסמכים עוזבים את המכשיר. זמין ב-Google Play וב-Microsoft Store.">
+  <meta property="og:title" content="QuickSign — חתימה על PDF">
+  <meta property="og:description" content="חתימה וחותמת על PDF במכשיר. פרטיות מלאה. בלי שליחה לשרת.">
+  <meta property="og:image" content="https://play-lh.googleusercontent.com/1m_gxiXbDp1IV69fg0q6S6QWqrmT4CTlBAvTkFNMOIWb_h5jJnq233ecmpocGhQ0LZnMke88RAMaMpDMdwze=s512-rw">
+  <link rel="icon" href="https://play-lh.googleusercontent.com/1m_gxiXbDp1IV69fg0q6S6QWqrmT4CTlBAvTkFNMOIWb_h5jJnq233ecmpocGhQ0LZnMke88RAMaMpDMdwze=s512-rw" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #1A5CB0;
+      --blue-dark: #134a8f;
+      --ink: #12151a;
+      --muted: #5a6472;
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --line: #e6ebf2;
+      --ok: #0f7a4c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Heebo, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(1200px 600px at 80% -10%, #d9e8ff 0%, transparent 55%),
+                  radial-gradient(900px 500px at -10% 20%, #e8f3ff 0%, transparent 50%),
+                  var(--bg);
+      line-height: 1.65;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 1.25rem 1.25rem 4rem; }
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: .5rem 0 1.5rem;
+    }
+    .brand { display: flex; align-items: center; gap: .75rem; font-weight: 700; font-size: 1.15rem; }
+    .brand img { width: 44px; height: 44px; border-radius: 12px; box-shadow: 0 6px 18px rgba(26,92,176,.25); }
+    nav { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .95rem; }
+    .hero {
+      display: grid; gap: 1.75rem; align-items: center;
+      padding: 1rem 0 2rem;
+    }
+    @media (min-width: 820px) {
+      .hero { grid-template-columns: 1.15fr .85fr; }
+    }
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.55rem);
+      line-height: 1.2; margin: 0 0 .75rem; letter-spacing: -.02em;
+    }
+    .lead { font-size: 1.1rem; color: var(--muted); margin: 0 0 1.25rem; max-width: 38rem; }
+    .privacy-pill {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: #e8f7ef; color: var(--ok); font-weight: 600; font-size: .9rem;
+      padding: .35rem .7rem; border-radius: 999px; margin-bottom: 1rem;
+    }
+    .cta { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1.25rem 0 .5rem; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      border-radius: 12px; padding: .85rem 1.15rem; font-weight: 600; font-size: 1rem;
+      border: 1px solid transparent; transition: transform .15s ease, background .15s ease;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-primary:hover { background: var(--blue-dark); color: #fff; }
+    .btn-secondary { background: var(--card); color: var(--ink); border-color: var(--line); }
+    .btn-ghost { background: transparent; color: var(--muted); border-color: var(--line); cursor: default; }
+    .stores { font-size: .9rem; color: var(--muted); }
+    .phone {
+      background: linear-gradient(160deg, #1A5CB0, #0d3a73);
+      border-radius: 28px; padding: 1.25rem; color: #fff;
+      box-shadow: 0 24px 50px rgba(26,92,176,.28);
+      min-height: 280px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .phone .mock-title { font-size: .85rem; opacity: .85; margin-bottom: .5rem; }
+    .phone .mock-card {
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+      border-radius: 16px; padding: 1rem; backdrop-filter: blur(6px);
+    }
+    .phone h2 { margin: 0 0 .35rem; font-size: 1.25rem; }
+    .features {
+      display: grid; gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin: 1rem 0 2.5rem;
+    }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+      padding: 1.15rem 1.2rem; box-shadow: 0 8px 24px rgba(18,21,26,.04);
+    }
+    .card h3 { margin: 0 0 .4rem; font-size: 1.05rem; }
+    .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .section-title { font-size: 1.35rem; margin: 0 0 1rem; }
+    footer {
+      margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--line);
+      color: var(--muted); font-size: .9rem;
+      display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; justify-content: space-between;
+    }
+    .en {
+      direction: ltr; text-align: left; margin-top: 3rem; padding-top: 2rem;
+      border-top: 2px dashed var(--line);
+    }
+    .en .lead { max-width: 40rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img src="https://play-lh.googleusercontent.com/1m_gxiXbDp1IV69fg0q6S6QWqrmT4CTlBAvTkFNMOIWb_h5jJnq233ecmpocGhQ0LZnMke88RAMaMpDMdwze=s512-rw" width="44" height="44" alt="QuickSign">
+        <span>QuickSign</span>
+      </div>
+      <nav>
+        <a href="#features">יכולות</a>
+        <a href="https://rotem-ya.github.io/quicksign-privacy/">פרטיות</a>
+        <a href="mailto:rot4735@gmail.com">צור קשר</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="privacy-pill">המסמכים נשארים במכשיר · בלי העלאה לשרת</div>
+        <h1>חתימה על PDF בשניות.<br>עם חתימה, חותמת, או שתיהן.</h1>
+        <p class="lead">QuickSign נותן לכם לחתום על מסמכים מהר, לשמור כמה חתימות וחותמות, ולייצא PDF מוכן — הכול מקומית במכשיר.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.rotem.quicksign" rel="noopener">Google Play</a>
+          <a class="btn btn-secondary" href="https://apps.microsoft.com/detail/9P5LF39HMD3B" rel="noopener">Microsoft Store</a>
+          <span class="btn btn-ghost" title="בקרוב ב-App Store">App Store · בקרוב</span>
+        </div>
+        <p class="stores">חינם · Android ו-Windows זמינים עכשיו · iOS בקרוב</p>
+      </div>
+      <aside class="phone" aria-hidden="true">
+        <div>
+          <div class="mock-title">QuickSign</div>
+          <div class="mock-card">
+            <h2>PDF מוכן לחתימה</h2>
+            <p style="margin:0;opacity:.9;font-size:.95rem;">בחרו חתימה שמורה, הוסיפו חותמת, גררו למקום הנכון — ושתפו.</p>
+          </div>
+        </div>
+        <div class="mock-card" style="margin-top:1rem;">
+          <strong>פרטיות קודם</strong>
+          <p style="margin:.35rem 0 0;opacity:.9;font-size:.9rem;">אין שליחת מסמכים לענן. חשבון אופציונלי רק לגיבוי חתימות והגדרות.</p>
+        </div>
+      </aside>
+    </section>
+
+    <h2 id="features" class="section-title">מה אפשר לעשות</h2>
+    <div class="features">
+      <div class="card">
+        <h3>כמה חתימות וחותמות</h3>
+        <p>שומרים ספרייה של חתימות וחותמות שונות, עם ברירת מחדל לכל סוג.</p>
+      </div>
+      <div class="card">
+        <h3>עם חותמת או בלי</h3>
+        <p>חתימה בלבד, חותמת בלבד, או שילוב שמור של חתימה+חותמת.</p>
+      </div>
+      <div class="card">
+        <h3>יצירה והעלאה</h3>
+        <p>ציור יד, צילום/קובץ לחותמת, חיתוך מ-PDF, או מעצב חותמת דיגיטלית.</p>
+      </div>
+      <div class="card">
+        <h3>ייצוא ושתף</h3>
+        <p>חתימות נצרבות ל-PDF. שיתוף ב-WhatsApp/אימייל, שמירה ל-Drive/OneDrive, והדפסה במחשב.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:2rem;">
+      <h3 style="margin-top:0;">פרטיות</h3>
+      <p>העיקרון: המסמכים שאתם חותמים עליהם לעולם אינם עוזבים את המכשיר. פרטים מלאים במדיניות הפרטיות.</p>
+      <p style="margin:.75rem 0 0;"><a href="https://rotem-ya.github.io/quicksign-privacy/">מדיניות פרטיות ←</a></p>
+    </div>
+
+    <footer>
+      <div>© QuickSign · רותם יעקב</div>
+      <div>
+        <a href="https://play.google.com/store/apps/details?id=com.rotem.quicksign">Play</a> ·
+        <a href="https://apps.microsoft.com/detail/9P5LF39HMD3B">Microsoft</a> ·
+        <a href="https://rotem-ya.github.io/quicksign-privacy/">Privacy</a> ·
+        <a href="mailto:rot4735@gmail.com">Contact</a>
+      </div>
+    </footer>
+
+    <section class="en" lang="en">
+      <div class="privacy-pill" style="background:#e8f0ff;color:var(--blue);">Documents stay on your device</div>
+      <h1>Sign PDFs in seconds.<br>Signature, stamp, or both.</h1>
+      <p class="lead">QuickSign lets you sign documents fast, save multiple signatures and stamps, and export a ready PDF — all on-device.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.rotem.quicksign" rel="noopener">Google Play</a>
+        <a class="btn btn-secondary" href="https://apps.microsoft.com/detail/9P5LF39HMD3B" rel="noopener">Microsoft Store</a>
+        <span class="btn btn-ghost">App Store · Coming soon</span>
+      </div>
+      <p class="stores">Free · Android &amp; Windows available · iOS coming soon</p>
+      <p style="margin-top:1.5rem;"><a href="https://rotem-ya.github.io/quicksign-privacy/">Privacy policy</a></p>
+    </section>
+  </div>
+</body>
+</html>
